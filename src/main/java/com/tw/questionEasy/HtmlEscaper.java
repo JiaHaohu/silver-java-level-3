@@ -1,22 +1,26 @@
 package com.tw.questionEasy;
 
 
-
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map.Entry;
 
 public class HtmlEscaper {
     // TODO:
     //   You can add additional members or blocks of code here if you want.
     // <-start-
-    private static HashMap<String, String> rulesMap = new HashMap<>();
+
+    private static LinkedHashMap<String, String> rulesMap = new LinkedHashMap<>();
+
     static {
+        rulesMap.put("&", "&amp;");
         rulesMap.put("\"", "&quot;");
         rulesMap.put("'", "&#39;");
-        rulesMap.put(" & ", " &amp; ");
         rulesMap.put("<", "&lt;");
         rulesMap.put(">", "&gt;");
     }
+
 
     // --end-->
 
@@ -37,8 +41,8 @@ public class HtmlEscaper {
         // TODO:
         //   Please implement the method
         // <-start-
-        for (Entry<String,String> entry : rulesMap.entrySet()) {
-            text = text.replaceAll(entry.getKey(),entry.getValue());
+        for (Entry<String, String> entry : rulesMap.entrySet()) {
+            text = text.replaceAll(entry.getKey(), entry.getValue());
         }
         return text;
         // --end-->
