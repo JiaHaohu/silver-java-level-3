@@ -44,6 +44,7 @@ public class HtmlEscaper {
         for (Entry<String, String> entry : rulesMap.entrySet()) {
             text = text.replaceAll(entry.getKey(), entry.getValue());
         }
+
         return text;
         // --end-->
     }
