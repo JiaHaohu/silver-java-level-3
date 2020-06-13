@@ -77,7 +77,8 @@ public class Library {
                 return o1.getIsbn().compareTo(o2.getIsbn());
             }
         });
-        return selectBooks;
+
+        return selectBooks.stream().distinct().collect(Collectors.toList());
         // --end-->
     }
 
