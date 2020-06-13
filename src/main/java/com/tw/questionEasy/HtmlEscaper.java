@@ -1,16 +1,29 @@
 package com.tw.questionEasy;
 
+
+
+import java.util.HashMap;
+import java.util.Map.Entry;
+
 public class HtmlEscaper {
     // TODO:
     //   You can add additional members or blocks of code here if you want.
     // <-start-
-    
+    private static HashMap<String, String> rulesMap = new HashMap<>();
+    static {
+        rulesMap.put("\"", "&quot;");
+        rulesMap.put("'", "&#39;");
+        rulesMap.put("&", "&amp;");
+        rulesMap.put("<", "&lt;");
+        rulesMap.put(">", "&gt;");
+    }
+
     // --end-->
 
     /**
      * This function will try escaping characters according to the rules defined in HTML 4.01
      * The rules are as follows:
-     *
+     * <p>
      * (1) Every `"` character will be escaped to `&quot;`
      * (2) Every `'` character will be escaped to `&#39;`
      * (3) Every `&` character will be escaped to `&amp;`
@@ -24,7 +37,10 @@ public class HtmlEscaper {
         // TODO:
         //   Please implement the method
         // <-start-
-        return null;
+        for (Entry<String,String> entry : rulesMap.entrySet()) {
+            text.replaceAll(entry.getKey(),entry.getValue());
+        }
+        return text;
         // --end-->
     }
 }
