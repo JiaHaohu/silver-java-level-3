@@ -4,11 +4,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 public class Library {
     private final List<Book> books = new ArrayList<>();
 
-    public void addAll(Book ...books) {
+    public void addAll(Book... books) {
         this.books.addAll(Arrays.asList(books));
     }
 
@@ -17,13 +18,14 @@ public class Library {
      *
      * @param predicate The matching condition.
      * @return The matched books. The returned books should be ordered by their ISBN
-     *   number.
+     * number.
      */
     public List<Book> findBooksBy(Predicate<Book> predicate) {
         // TODO:
         //   Please implement the method
         // <-start-
-        throw new RuntimeException("delete me.");
+        List<Book> selectBooks = books.stream().filter(predicate).collect(Collectors.toList());
+        return selectBooks;
         // --end-->
     }
 
@@ -37,7 +39,9 @@ public class Library {
         // TODO:
         //   Please complete the method
         // <-start-
-        Predicate<Book> isPriceLowerThanOrEqualTo = null;
+        ArrayList<Book> list = new ArrayList<>();
+        Predicate<Book> isPriceLowerThanOrEqualTo = book -> book.getPrice() < maxPriceInclusive;
+
         // --end-->
 
         // You cannot change this line.
@@ -49,9 +53,9 @@ public class Library {
      *
      * @param tags The tag list.
      * @return The books which contains one of the specified tags. The returned books
-     *   should be ordered by their ISBN number.
+     * should be ordered by their ISBN number.
      */
-    public List<Book> findBooksByTag(String ...tags) {
+    public List<Book> findBooksByTag(String... tags) {
         // TODO:
         //   Please implement the method. You must use `findBooksBy` method
         // <-start-
