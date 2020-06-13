@@ -2,6 +2,7 @@ package com.tw.questionMedium;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
@@ -25,6 +26,7 @@ public class Library {
         //   Please implement the method
         // <-start-
         List<Book> selectBooks = books.stream().filter(predicate).collect(Collectors.toList());
+        selectBooks.sort((o1, o2) -> o2.getPrice() - o1.getPrice());
         return selectBooks;
         // --end-->
     }
@@ -40,7 +42,7 @@ public class Library {
         //   Please complete the method
         // <-start-
         ArrayList<Book> list = new ArrayList<>();
-        Predicate<Book> isPriceLowerThanOrEqualTo = book -> book.getPrice() < maxPriceInclusive;
+        Predicate<Book> isPriceLowerThanOrEqualTo = book -> book.getPrice() <= maxPriceInclusive;
 
         // --end-->
 
