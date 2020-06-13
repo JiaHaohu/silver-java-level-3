@@ -13,7 +13,7 @@ public class HtmlEscaper {
     static {
         rulesMap.put("\"", "&quot;");
         rulesMap.put("'", "&#39;");
-        rulesMap.put("&", "&amp;");
+        rulesMap.put(" & ", " &amp; ");
         rulesMap.put("<", "&lt;");
         rulesMap.put(">", "&gt;");
     }
@@ -38,7 +38,7 @@ public class HtmlEscaper {
         //   Please implement the method
         // <-start-
         for (Entry<String,String> entry : rulesMap.entrySet()) {
-            text.replaceAll(entry.getKey(),entry.getValue());
+            text = text.replaceAll(entry.getKey(),entry.getValue());
         }
         return text;
         // --end-->
