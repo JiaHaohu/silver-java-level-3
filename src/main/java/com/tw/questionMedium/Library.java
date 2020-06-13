@@ -1,5 +1,6 @@
 package com.tw.questionMedium;
 
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
@@ -66,6 +67,8 @@ public class Library {
         if (tags.length == 0 || tags ==null){
             return selectBooks;
         }
+
+        tags = Arrays.stream(tags).distinct().toArray(String[]::new);
 
         for (String tag : tags) {
             selectByOneTag(selectBooks,tag);
