@@ -41,6 +41,9 @@ public class HtmlEscaper {
         // TODO:
         //   Please implement the method
         // <-start-
+        if (text == null) {
+            throw  new IllegalArgumentException();
+        }
         for (Entry<String, String> entry : rulesMap.entrySet()) {
             text = text.replaceAll(entry.getKey(), entry.getValue());
         }
