@@ -62,17 +62,30 @@ public class Library {
         //   Please implement the method. You must use `findBooksBy` method
         // <-start-
         ArrayList<Book> selectBooks = new ArrayList<>();
-        if (tags.length == 0) {
+
+        if (tags.length == 0 || tags ==null){
             return selectBooks;
+        }
+
+        for (String tag : tags) {
+            selectByOneTag(selectBooks,tag);
         }
 
         return selectBooks;
         // --end-->
     }
 
+
     // TODO:
     //   You can add additional methods here if you want.
     // <-start-
+
+    private void selectByOneTag(ArrayList<Book> selectBooks, String tag) {
+        Predicate<Book> isContainTag = book -> book.getTags().contains(tag);
+        List<Book> selectByTagBooks = books.stream().filter(isContainTag).collect(Collectors.toList());
+        selectBooks.addAll(selectByTagBooks);
+    }
+
 
     // --end-->
 }
