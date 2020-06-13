@@ -61,7 +61,12 @@ public class Library {
         // TODO:
         //   Please implement the method. You must use `findBooksBy` method
         // <-start-
-        throw new RuntimeException("Delete me.");
+        ArrayList<Book> selectBooks = new ArrayList<>();
+        if (tags.length == 0) {
+            return selectBooks;
+        }
+
+        return selectBooks;
         // --end-->
     }
 
